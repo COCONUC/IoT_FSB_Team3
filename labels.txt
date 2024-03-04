@@ -1,4 +1,0 @@
-0 Blue Bottle
-1 Green Bottle
-2 Tea Cup
-3 Background
