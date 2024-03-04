@@ -40,15 +40,15 @@ while True:
             # Update thermal stat
                 value = random.randint(10, 70)
                 print("Update thermal: ", value)
-                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor1', counter)
+                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor1', value)
             case 2:
             # Update light stat
                 value = random.randint(0, 500)
                 print("Update light: ", value)
-                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor2', counter)
+                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor2', value)
             case 3:
             # Update humidity stat
                 value = random.randint(0, 100)
                 print("Update humidity: ", value)
-                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor3', counter)
+                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor3', value)
                 stype = 0
