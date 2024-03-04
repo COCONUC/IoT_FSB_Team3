@@ -7,7 +7,7 @@ MQTT_PORT = 1883
 MQTT_USERNAME = "group3"
 MQTT_PASSWORD = "ngoansangdinh"
 MQTT_TOPIC_PUB = MQTT_USERNAME + "/feeds/V1"
-MQTT_TOPIC_SUB = MQTT_USERNAME + "/feeds/V1"
+MQTT_TOPIC_SUB = MQTT_USERNAME + "/feeds/V1/+"
 
 
 def mqtt_connected(client, userdata, flags, rc):
@@ -40,15 +40,15 @@ while True:
             # Update thermal stat
                 value = random.randint(10, 70)
                 print("Update thermal: ", value)
-                mqttClient.publish(MQTT_TOPIC_PUB + 'sensor1', counter)
+                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor1', counter)
             case 2:
             # Update light stat
                 value = random.randint(0, 500)
                 print("Update light: ", value)
-                mqttClient.publish(MQTT_TOPIC_PUB + 'sensor2', counter)
+                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor2', counter)
             case 3:
             # Update humidity stat
                 value = random.randint(0, 100)
                 print("Update humidity: ", value)
-                mqttClient.publish(MQTT_TOPIC_PUB + 'sensor3', counter)
+                mqttClient.publish(MQTT_TOPIC_PUB + '/sensor3', counter)
                 stype = 0
