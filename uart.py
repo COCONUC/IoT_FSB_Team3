@@ -86,7 +86,7 @@ def readSensor():
 relay1_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
 relay1_OFF = [2, 6, 0, 0, 0, 0, 137, 249]
 
-def setRelay(state, id):
+def setRelay(state):
     if state == True:
         ser.write(relay1_ON)
     else:
