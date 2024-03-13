@@ -63,7 +63,6 @@ def writeData(data):
 # RS485 protocol
 def serial_read_data(ser):
     bytesToRead = ser.inWaiting()
-    print(bytesToRead)
     if bytesToRead > 0:
         out = ser.read(bytesToRead)
         data_array = [b for b in out]
