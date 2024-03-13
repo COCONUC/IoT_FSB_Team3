@@ -19,8 +19,10 @@ try:
     portName = "/dev/ttyUSB0"
     ser = serial.Serial(port=portName, baudrate=115200)
     print("Open port successfully")
+    isSensorConnected = True
 except:
     print("Can not open the port")
+    isSensorConnected = False
 
 def processData(client, data):
     data = data.replace("!", "")
