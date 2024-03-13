@@ -32,7 +32,13 @@ mqttClient.on_message = mqtt_message
 
 mqttClient.loop_start()
 
+counter = False
+
 while True:
     if isSensorConnected and ser != None:
-        print(readSensor())
+        temp = readSensor() * 0.01
+        if temp > 0:
+            print(temp + ' *C')
+    setRelay(counter)
+    counter = not counter
     time.sleep(1)
