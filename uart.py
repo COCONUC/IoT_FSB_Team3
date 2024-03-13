@@ -1,4 +1,5 @@
 import serial.tools.list_ports
+import time
 
 ser = None
 def getPort():
@@ -70,3 +71,22 @@ def serial_read_data(ser):
         else:
             return -1
     return 0
+
+sensor_data = [1, 3, 0, 6, 0, 1, 100, 11]
+def readSensor():
+    serial_read_data(ser)
+    ser.write(sensor_data)
+    time.sleep(1)
+    return serial_read_data(ser)
+
+
+relay1_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
+relay1_OFF = [2, 6, 0, 0, 0, 0, 137, 249]
+
+def setRelay(state, id):
+    if state == True:
+        ser.write(relay1_ON)
+    else:
+        ser.write(relay1_OFF)
+    time.sleep(1)
+    print(serial_read_data(ser))
