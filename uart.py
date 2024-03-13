@@ -17,7 +17,8 @@ def getPort():
 isSensorConnected = False
 try:
     portName = "/dev/ttyUSB0"
-    ser = serial.Serial(port=portName, baudrate=115200)
+    ser = serial.Serial(port=portName, baudrate=9600)
+    print(ser)
     print("Open port successfully")
     isSensorConnected = True
 except:
@@ -76,7 +77,6 @@ def serial_read_data(ser):
 
 sensor_data = [1, 3, 0, 6, 0, 1, 100, 11]
 def readSensor():
-    print(ser)
     serial_read_data(ser)
     ser.write(sensor_data)
     time.sleep(1)
