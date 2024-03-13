@@ -77,9 +77,11 @@ def serial_read_data(ser):
 
 sensor_data = [1, 3, 0, 6, 0, 1, 100, 11]
 def readSensor():
+    print(111)
     serial_read_data(ser)
     ser.write(sensor_data)
     time.sleep(1)
+    print(222)
     return serial_read_data(ser)
 
 
