@@ -34,5 +34,5 @@ mqttClient.loop_start()
 
 while True:
     if isSensorConnected and ser != None:
-        serial_read_data(ser)
+        print(serial_read_data(ser))
     time.sleep(1)
