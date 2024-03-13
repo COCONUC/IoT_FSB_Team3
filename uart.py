@@ -8,16 +8,18 @@ def getPort():
     for i in range(0, N):
         port = ports[i]
         strPort = str(port)
-        if "USB Serial Device" in strPort:
+        if "USB" in strPort:
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     return commPort
 
 isSensorConnected = False
-if getPort() != "None":
-    ser = serial.Serial(port=getPort(), baudrate=115200)
-    isSensorConnected = True
-    print(ser)
+try:
+    portName = "/dev/ttyUSB0"
+    ser = serial.Serial(port=portName, baudrate=115200)
+    print("Open port successfully")
+except:
+    print("Can not open the port")
 
 def processData(client, data):
     data = data.replace("!", "")
