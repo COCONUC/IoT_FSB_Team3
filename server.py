@@ -36,9 +36,10 @@ counter = False
 
 while True:
     if isSensorConnected and ser != None:
-        temp = readSensor() * 0.01
+        temp = round(readSensor(), 2) * 0.01
         if temp > 0:
             print(str(temp) + ' *C')
+    print(counter)
     setRelay(counter)
     counter = not counter
     time.sleep(1)
