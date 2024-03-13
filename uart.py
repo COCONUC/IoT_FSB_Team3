@@ -66,7 +66,7 @@ def serial_read_data(ser):
     if bytesToRead > 0:
         out = ser.read(bytesToRead)
         data_array = [b for b in out]
-        print(data_array)
+        # print(data_array)
         if len(data_array) >= 7:
             array_size = len(data_array)
             value = data_array[array_size - 4] * 256 + data_array[array_size - 3]
@@ -96,19 +96,19 @@ def setRelay(state):
         ser.write(relay1_ON)
     else:
         ser.write(relay1_OFF)
-    time.sleep(1)
-    print(serial_read_data(ser))
-    # Relay ID3
-    if state == True:
-        ser.write(relay2_ON)
-    else:
-        ser.write(relay2_OFF)
-    time.sleep(1)
-    print(serial_read_data(ser))
-    # Relay ID4
-    if state == True:
-        ser.write(relay3_ON)
-    else:
-        ser.write(relay3_OFF)
-    time.sleep(1)
-    print(serial_read_data(ser))
+    # time.sleep(1)
+    # # print(serial_read_data(ser))
+    # # Relay ID3
+    # if state == True:
+    #     ser.write(relay2_ON)
+    # else:
+    #     ser.write(relay2_OFF)
+    # time.sleep(1)
+    # # print(serial_read_data(ser))
+    # # Relay ID4
+    # if state == True:
+    #     ser.write(relay3_ON)
+    # else:
+    #     ser.write(relay3_OFF)
+    # time.sleep(1)
+    # # print(serial_read_data(ser))
