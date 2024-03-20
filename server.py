@@ -52,13 +52,17 @@ counter = False
 
 while True:
     if isSensorConnected and ser != None:
-        temp = round(readSensor(), 2) * 0.01
+        temp = round(readSensor(1), 2) * 0.01
         if temp > 0:
-            print(str(temp) + ' *C')
-    temp = random.random() * 100
-    mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
-    humid = random.random() * 100
-    mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
+            print(str(temp) + ' °C')
+            mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
+        humid = round(readSensor(2), 2) * 0.01
+        print(str(humid) + ' %')
+        mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
+    # temp = random.random() * 100
+    # mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
+    # humid = random.random() * 100
+    # mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
     # print(counter)
     # setRelay(counter)
     # counter = not counter
