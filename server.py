@@ -3,6 +3,7 @@
 import paho.mqtt.client as mqtt
 import time
 from uart import *
+import random
 
 MQTT_SERVER = "mqtt.ohstem.vn"
 MQTT_PORT = 1883
@@ -11,15 +12,30 @@ MQTT_PASSWORD = "ngoansangdinh"
 MQTT_TOPIC_PUB = MQTT_USERNAME + "/feeds/V1"
 MQTT_TOPIC_SUB = MQTT_USERNAME + "/feeds/V2"
 
+relay_topics = ['/r1', '/r2', '/r3']
+
 def mqtt_connected(client, userdata, flags, rc):
     print("Connected succesfully!!")
-    client.subscribe(MQTT_TOPIC_SUB)
+    for topic in relay_topics:
+        client.subscribe(MQTT_TOPIC_SUB + topic)
 
 def mqtt_subscribed(client, userdata, mid, granted_qos):
     print("Subscribed to Topic!!!")
 
 def mqtt_message(client, userdata, message):
-    print("Receive data from topic " + message.topic +": " + str(message.payload.decode('utf-8')))
+    global relay_topics
+    payload = str(message.payload.decode('utf-8'))
+    print("Receive data from topic " + message.topic +": " + payload)
+    match message.topic.split('/')[-1]:
+        case 'r1':
+            response = setRelay(payload == '1', 1)
+            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], response)
+        case 'r2':
+            response = setRelay(payload == '1', 2)
+            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], response)
+        case 'r3':
+            response = setRelay(payload == '1', 3)
+            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], response)
 
 #Inint MQTT client
 mqttClient = mqtt.Client()
@@ -39,7 +55,11 @@ while True:
         temp = round(readSensor(), 2) * 0.01
         if temp > 0:
             print(str(temp) + ' *C')
-    print(counter)
-    setRelay(counter)
-    counter = not counter
+    temp = random.random() * 100
+    mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
+    humid = random.random() * 100
+    mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
+    # print(counter)
+    # setRelay(counter)
+    # counter = not counter
     time.sleep(1)
