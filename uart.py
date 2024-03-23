@@ -90,35 +90,35 @@ def readSensor(type):
         return serial_read_data(ser)
 
 
-relay1_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
-relay1_OFF = [2, 6, 0, 0, 0, 0, 137, 249]
-relay2_ON  = [3, 6, 0, 0, 0, 255, 200, 104]
-relay2_OFF = [3, 6, 0, 0, 0, 0, 136, 40]
-relay3_ON  = [4, 6, 0, 0, 0, 255, 201, 223]
-relay3_OFF = [4, 6, 0, 0, 0, 0, 137, 159]
+# relay1_ON  = [2, 6, 0, 0, 0, 255, 201, 185]
+# relay1_OFF = [2, 6, 0, 0, 0, 0, 137, 249]
+# relay2_ON  = [3, 6, 0, 0, 0, 255, 200, 104]
+# relay2_OFF = [3, 6, 0, 0, 0, 0, 136, 40]
+# relay3_ON  = [4, 6, 0, 0, 0, 255, 201, 223]
+# relay3_OFF = [4, 6, 0, 0, 0, 0, 137, 159]
 
-def setRelay(state, relay_index):
-    # Relay ID2
-    if relay_index == 1:
-        print('Set relay 1: ' + str(state))
-        if state == True:
-            ser.write(relay1_ON)
-        else:
-            ser.write(relay1_OFF)
+# def setRelay(state, relay_index):
+#     # Relay ID2
+#     if relay_index == 1:
+#         print('Set relay 1: ' + str(state))
+#         if state == True:
+#             ser.write(relay1_ON)
+#         else:
+#             ser.write(relay1_OFF)
         
-    # Relay ID3
-    if relay_index == 2:
-        print('Set relay 2: ' + str(state))
-        if state == True:
-            ser.write(relay2_ON)
-        else:
-            ser.write(relay2_OFF)
-    # Relay ID4
-    if relay_index == 3:
-        print('Set relay 3: ' + str(state))
-        if state == True:
-            ser.write(relay3_ON)
-        else:
-            ser.write(relay3_OFF)
-    time.sleep(1)
-    return(serial_read_data(ser))
+#     # Relay ID3
+#     if relay_index == 2:
+#         print('Set relay 2: ' + str(state))
+#         if state == True:
+#             ser.write(relay2_ON)
+#         else:
+#             ser.write(relay2_OFF)
+#     # Relay ID4
+#     if relay_index == 3:
+#         print('Set relay 3: ' + str(state))
+#         if state == True:
+#             ser.write(relay3_ON)
+#         else:
+#             ser.write(relay3_OFF)
+#     time.sleep(1)
+#     return(serial_read_data(ser))

@@ -3,7 +3,7 @@
 import paho.mqtt.client as mqtt
 import time
 from uart import *
-import random
+from uart_relays import *
 
 MQTT_SERVER = "mqtt.ohstem.vn"
 MQTT_PORT = 1883
