@@ -29,12 +29,15 @@ def mqtt_message(client, userdata, message):
     match message.topic.split('/')[-1]:
         case 'r1':
             response = setRelay(payload == '1', 1)
+            print('Response R1: ' + str(response))
             mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], response)
         case 'r2':
             response = setRelay(payload == '1', 2)
+            print('Response R2: ' + str(response))
             mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], response)
         case 'r3':
             response = setRelay(payload == '1', 3)
+            print('Response R3: ' + str(response))
             mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], response)
 
 #Inint MQTT client
@@ -58,4 +61,4 @@ while True:
         if humid > 0:
             print(str(humid) + ' %')
             mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
-    time.sleep(5)
+    time.sleep(1)
