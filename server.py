@@ -75,4 +75,4 @@ while True:
         if humid > 0:
             print(str(humid) + ' %')
             mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
-    time.sleep(2)
+    time.sleep(5)
