@@ -48,8 +48,6 @@ mqttClient.on_message = mqtt_message
 
 mqttClient.loop_start()
 
-counter = False
-
 while True:
     if isSensorConnected and ser != None:
         temp = round(readSensor(1), 2) * 0.01
@@ -57,13 +55,7 @@ while True:
             print(str(temp) + ' °C')
             mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
         humid = round(readSensor(2), 2) * 0.01
-        print(str(humid) + ' %')
-        mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
-    # temp = random.random() * 100
-    # mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
-    # humid = random.random() * 100
-    # mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
-    # print(counter)
-    # setRelay(counter)
-    # counter = not counter
-    time.sleep(1)
+        if humid > 0:
+            print(str(humid) + ' %')
+            mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
+    time.sleep(5)
