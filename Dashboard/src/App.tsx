@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import mqtt from 'mqtt'
 import './App.css'
+import ChartJS from './Chart'
+import PopUp from './PopUp'
 
 const sensorTopics = ['group3/feeds/V1/temp', 'group3/feeds/V1/humid', 'group3/feeds/V1/r1', 'group3/feeds/V1/r2', 'group3/feeds/V1/r3']
 const buttonTopics = ['group3/feeds/V2/r1', 'group3/feeds/V2/r2', 'group3/feeds/V2/r3']
@@ -14,6 +16,7 @@ function App() {
   const [tempHistory, setTempHistory] = useState<number[]>([])
   const [humidHistory, setHumidHistory] = useState<number[]>([])
   const mqttClient = useRef<any>(null)
+  const [dataset, setDataset] = useState([{temp: 0, humid: 0, time: 1 }]);
 
   useEffect(() => {
     mqttClient.current = mqtt.connect('wss://dinhhn:0337221555@mqtt.ohstem.vn:8084', {
@@ -28,14 +31,14 @@ function App() {
       sensorTopics.map((topic: string) => {
         mqttClient.current.subscribe(topic, (err: any) => {
           if (!err) {
-            console.log(`Subscribe ${topic} success`)
+            // console.log(`Subscribe ${topic} success`)
           } else console.log(`Subscribe ${topic} failed: `, err)
         })
       })
       buttonTopics.map((topic: string) => {
         mqttClient.current.subscribe(topic, (err: any) => {
           if (!err) {
-            console.log(`Subscribe ${topic} success`)
+            // console.log(`Subscribe ${topic} success`)
           } else console.log(`Subscribe ${topic} failed: `, err)
         })
       })
@@ -55,17 +58,17 @@ function App() {
           setHumid(message.toString())
           setHumidHistory((prevHistory) => [...prevHistory, parseFloat(message.toString())])
           break
-        case buttonTopics[2]:
-          console.log(!!message.toString())
-          setR1Switch(!!message.toString())
+        case sensorTopics[2]:
+          console.log(message.toString())
+          setR1Switch(message.toString() === 'True')
           break
-        case buttonTopics[3]:
-          console.log(!!message.toString())
-          setR2Switch(!!message.toString())
+        case sensorTopics[3]:
+          console.log(message.toString())
+          setR2Switch(message.toString() === 'True')
           break
-        case buttonTopics[5]:
-          console.log(!!message.toString())
-          setR2Switch(!!message.toString())
+        case sensorTopics[4]:
+          console.log(message.toString())
+          setR3Switch(message.toString() === 'True')
           break
       }
       // console.log(`Message from topic ${topic}: `, message.toString())
@@ -75,13 +78,10 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    // console.log(tempHistory)
-  }, [tempHistory])
-
-  useEffect(() => {
-    // console.log(humidHistory)
-  }, [humidHistory])
+  useEffect( () => {
+    const data = { temp: temp == '' ? 0 : parseFloat(temp), humid: humid == '' ? 0 : parseFloat(humid), time: dataset.length + 1 }
+    setDataset([...dataset, data]);
+  },[tempHistory.length, humidHistory.length])
 
   const onClickR1 = () => {
     mqttClient.current.publish(buttonTopics[0], r1Switch ? '0' : '1')
@@ -95,17 +95,34 @@ function App() {
 
   return (
     <>
-      <h1>DASHBOARD</h1>
-      <div className='card'>
-        <span>Temperature: {Math.round(parseFloat(temp) * 100) / 100} °C</span>
-        <br />
-        <span>Humidity: {Math.round(parseFloat(humid) * 100) / 100} %</span>
-        <br />
-        <button onClick={onClickR1}>R1 SWITCH: {r1Switch ? 'ON' : 'OFF'}</button>
-        <br />
-        <button onClick={onClickR2}>R2 SWITCH {r2Switch ? 'ON' : 'OFF'}</button>
-        <br />
-        <button onClick={onClickR3}>R3 SWITCH {r3Switch ? 'ON' : 'OFF'}</button>
+      <div className='container'>
+        <h3>DASHBOARD IOT TEAM 3</h3>
+        <div className='d-flex'>
+        <div className='temp'>
+          <img width="100px" src="temp.png"/>
+          <span>{Math.floor(parseFloat(temp) * 100) / 100} °C</span>
+        </div>
+        <div className='humid'>
+        <img width="100px" src="viscosity.png"/>
+        <span>{Math.floor(parseFloat(humid) * 100) / 100} %</span>
+        </div>
+        </div>
+        <div className='popup'>
+            <PopUp/>
+        </div>
+        <ChartJS dataset={dataset}/>
+        <div className='card'>
+          <div className='d-flex'>
+            <input type="checkbox" checked={r1Switch} /><label onClick={onClickR1}></label>
+            <input type="checkbox" checked={r2Switch}/><label onClick={onClickR2}></label>
+            <input type="checkbox" checked={r3Switch}/><label onClick={onClickR3}></label>
+          </div>
+          <div className='d-flex'>
+              <p>R1 Switch</p>
+              <p>R2 Switch</p>
+              <p>R3 Switch</p>
+          </div>
+        </div>
       </div>
     </>
   )

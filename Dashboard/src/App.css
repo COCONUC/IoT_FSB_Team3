@@ -17,6 +17,85 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.d-flex{
+  display: flex;
+  justify-content: space-around;
+}
+.mt-3{
+  margin-top: 30px;
+}
+
+input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 100px;
+  height: 50px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 20px;
+  transition: 0.3s;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.popup{
+  position: relative;
+}
+
+.popup button{
+  position: absolute;
+  right: -50px;
+  top: -40px;
+  background-color: #fff;
+  outline: 0;
+}
+
+.temp,.humid{
+  position: relative;
+}
+
+.temp span,
+.humid span{
+  position: absolute;
+  top: 25px;
+  width: 100%;
+  left: 70px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+input:checked + label {
+  background: #bada55;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 75px;
+}
 
 @keyframes logo-spin {
   from {

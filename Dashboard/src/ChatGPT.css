@@ -1,0 +1,9 @@
+.cs-main-container{
+    max-width: 300px;
+    max-height: 300px;
+}
+
+[role=tooltip].popup-content{
+    width: 300px;
+    height: 300px;
+}
