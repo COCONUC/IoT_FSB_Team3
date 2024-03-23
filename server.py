@@ -36,7 +36,7 @@ def mqtt_message(client, userdata, message):
             response = setRelay(payload == '1', 2)
             print('Response R2: ' + str(response))
             mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], str(response) == '255')
-            print(MQTT_TOPIC_PUB + relay_topics[2])
+            print(MQTT_TOPIC_PUB + relay_topics[1])
         case 'r3':
             response = setRelay(payload == '1', 3)
             print('Response R3: ' + str(response))
