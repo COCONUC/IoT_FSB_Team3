@@ -79,12 +79,12 @@ sensor_temp = [1, 3, 0, 6, 0, 1, 100, 11]
 sensor_humid = [1, 3, 0, 7, 0, 1, 53, 203]
 def readSensor(type):
     if type == 1:
-        serial_read_data(ser)
+        # serial_read_data(ser)
         ser.write(sensor_temp)
         time.sleep(1)
         return serial_read_data(ser)
     if type == 2:
-        serial_read_data(ser)
+        # serial_read_data(ser)
         ser.write(sensor_humid)
         time.sleep(1)
         return serial_read_data(ser)
