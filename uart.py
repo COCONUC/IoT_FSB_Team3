@@ -5,7 +5,6 @@ ser = None
 def getPort():
     ports = serial.tools.list_ports.comports()
     N = len(ports)
-    print(N)
     commPort = "None"
     for i in range(0, N):
         port = ports[i]
@@ -14,7 +13,6 @@ def getPort():
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     return commPort
-print(getPort())
 
 isSensorConnected = False
 try:
