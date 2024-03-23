@@ -27,9 +27,9 @@ except:
 
 # RS485 protocol
 def serial_read_data(ser):
-    bytesToRead = ser.inWaiting()
+    bytesToRead = ser_relays.inWaiting()
     if bytesToRead > 0:
-        out = ser.read(bytesToRead)
+        out = ser_relays.read(bytesToRead)
         data_array = [b for b in out]
         # print(data_array)
         if len(data_array) >= 7:
