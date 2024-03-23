@@ -105,7 +105,7 @@ def setRelay(state, relay_index):
             ser.write(relay1_ON)
         else:
             ser.write(relay1_OFF)
-        # time.sleep(1)
+        time.sleep(0.5)
         return(serial_read_data(ser))
     # Relay ID3
     if relay_index == 2:
@@ -114,7 +114,7 @@ def setRelay(state, relay_index):
             ser.write(relay2_ON)
         else:
             ser.write(relay2_OFF)
-        # time.sleep(1)
+        time.sleep(0.5)
         return(serial_read_data(ser))
     # Relay ID4
     if relay_index == 3:
@@ -123,5 +123,5 @@ def setRelay(state, relay_index):
             ser.write(relay3_ON)
         else:
             ser.write(relay3_OFF)
-        # time.sleep(1)
+        time.sleep(0.5)
         return(serial_read_data(ser))
