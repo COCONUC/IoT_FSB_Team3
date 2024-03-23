@@ -30,15 +30,15 @@ def mqtt_message(client, userdata, message):
         case 'r1':
             response = setRelay(payload == '1', 1)
             print('Response R1: ' + str(response))
-            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], response)
+            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], str(response) == 255)
         case 'r2':
             response = setRelay(payload == '1', 2)
             print('Response R2: ' + str(response))
-            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], response)
+            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], str(response) == 255)
         case 'r3':
             response = setRelay(payload == '1', 3)
             print('Response R3: ' + str(response))
-            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], response)
+            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], str(response) == 255)
 
 #Inint MQTT client
 mqttClient = mqtt.Client()
