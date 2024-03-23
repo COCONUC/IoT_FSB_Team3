@@ -13,6 +13,7 @@ def getPort():
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     return commPort
+print(getPort())
 
 isSensorConnected = False
 try:
