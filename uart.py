@@ -5,6 +5,7 @@ ser = None
 def getPort():
     ports = serial.tools.list_ports.comports()
     N = len(ports)
+    print(N)
     commPort = "None"
     for i in range(0, N):
         port = ports[i]
