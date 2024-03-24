@@ -14,16 +14,13 @@ def getPort():
             commPort = (splitPort[0])
     return commPort
 
-isSensorConnected = False
 portName = "/dev/ttyUSB0"
 baudrate=9600
 try:
     ser_relays = serial.Serial(port=portName, baudrate=baudrate)
     print("Open port successfully: " + str(ser))
-    isSensorConnected = True
 except:
     print("Can not open the port")
-    isSensorConnected = False
 
 # RS485 protocol
 def serial_read_data(ser):

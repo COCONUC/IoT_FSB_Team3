@@ -62,7 +62,7 @@ relay_number = 0
 relay_value = False
 
 while True:
-    if isSensorConnected and ser != None and ser_relays != None:
+    if ser != None and ser_relays != None:
 
         # Relays interact
         if is_relay_set == True:
