@@ -78,7 +78,7 @@ while True:
             print(str(temp) + ' °C')
             mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
         humid = round(readSensor(2) * 0.01, 2)
-        if humid > 0:
+        if humid >= 0:
             print(str(humid) + ' %')
             mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
         
