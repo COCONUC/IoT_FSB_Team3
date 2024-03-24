@@ -112,13 +112,17 @@ label:active:after {
   width: 75px;
 }
 
+.container{
+  width: 700px;
+}
+
 .cs-main-container{
   max-width: 300px;
   max-height: 300px;
 }
 
 [role=tooltip].popup-content{
-  width: 300px;
+  width: 300px !important;
   height: 300px;
 }
 

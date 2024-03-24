@@ -113,9 +113,15 @@ function App() {
         <ChartJS dataset={dataset}/>
         <div className='card'>
           <div className='d-flex'>
-            <input type="checkbox" checked={r1Switch} /><label onClick={onClickR1}></label>
-            <input type="checkbox" checked={r2Switch}/><label onClick={onClickR2}></label>
-            <input type="checkbox" checked={r3Switch}/><label onClick={onClickR3}></label>
+            <div>
+              <input type="checkbox" checked={r1Switch}/><label onClick={onClickR1}></label>
+            </div>
+            <div>
+              <input type="checkbox" checked={r2Switch}/><label onClick={onClickR2}></label>
+            </div>
+            <div>
+              <input type="checkbox" checked={r3Switch}/><label onClick={onClickR3}></label>
+            </div>
           </div>
           <div className='d-flex'>
               <p>R1 Switch</p>
