@@ -62,7 +62,7 @@ relay_number = 0
 relay_value = False
 
 while True:
-    if ser != None and ser_relays != None:
+    if ser != None:
 
         # Relays interact
         if is_relay_set == True:
