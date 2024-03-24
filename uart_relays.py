@@ -18,7 +18,7 @@ isSensorConnected = False
 portName = "/dev/ttyUSB0"
 baudrate=9600
 try:
-    ser = serial.Serial(port=portName, baudrate=baudrate)
+    ser_relays = serial.Serial(port=portName, baudrate=baudrate)
     print("Open port successfully: " + str(ser))
     isSensorConnected = True
 except:
