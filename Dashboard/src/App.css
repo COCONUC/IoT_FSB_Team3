@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #fff;
+}
+
+body{
+  background-color: #ebebeb;
 }
 
 .logo {
@@ -62,12 +67,22 @@ label:after {
   position: relative;
 }
 
+*:focus{
+  outline: none !important;
+  border: 0;
+}
+
 .popup button{
   position: absolute;
-  right: -50px;
+  right: -25px;
   top: -40px;
   background-color: #fff;
   outline: 0;
+  padding: 0;
+}
+
+.popup button:hover{
+  border: none;
 }
 
 .temp,.humid{
@@ -95,6 +110,16 @@ input:checked + label:after {
 
 label:active:after {
   width: 75px;
+}
+
+.cs-main-container{
+  max-width: 300px;
+  max-height: 300px;
+}
+
+[role=tooltip].popup-content{
+  width: 300px;
+  height: 300px;
 }
 
 @keyframes logo-spin {

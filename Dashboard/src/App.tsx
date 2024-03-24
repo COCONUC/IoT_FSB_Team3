@@ -99,13 +99,13 @@ function App() {
         <h3>DASHBOARD IOT TEAM 3</h3>
         <div className='d-flex'>
         <div className='temp'>
-          <img width="100px" src="temp.png"/>
+          <img width="80px" src="temp.png"/>
           <span>{Math.floor(parseFloat(temp) * 100) / 100} °C</span>
         </div>
         <div className='humid'>
-        <img width="100px" src="viscosity.png"/>
-        <span>{Math.floor(parseFloat(humid) * 100) / 100} %</span>
-        </div>
+          <img width="80px" src="viscosity.png"/>
+          <span>{Math.floor(parseFloat(humid) * 100) / 100} %</span>
+          </div>
         </div>
         <div className='popup'>
             <PopUp/>
