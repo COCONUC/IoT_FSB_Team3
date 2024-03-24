@@ -104,6 +104,7 @@ label:after {
 
 .temp span,
 .humid span{
+  color: #577399;
   position: absolute;
   top: 25px;
   width: 100%;

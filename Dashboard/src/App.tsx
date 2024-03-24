@@ -123,7 +123,7 @@ function App() {
           </div>
         </div>
         <div className="popup">
-          <PopUp />
+          <PopUp temp={temp} humid={humid} />
         </div>
         <ChartJS dataset={dataset} />
         <Slider
