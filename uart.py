@@ -59,6 +59,9 @@ relay3_ON  = [4, 6, 0, 0, 0, 255, 201, 223]
 relay3_OFF = [4, 6, 0, 0, 0, 0, 137, 159]
 
 def setRelay(state, relay_index):
+    # Reset read pipe
+    serial_read_data(ser)
+
     # Relay ID2
     if relay_index == 1:
         print('Set relay 1: ' + str(state))
