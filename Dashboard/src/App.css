@@ -41,10 +41,23 @@ label {
   text-indent: -9999px;
   width: 100px;
   height: 50px;
-  background: grey;
+  background: #577399;
   display: block;
   border-radius: 100px;
   position: relative;
+}
+
+div.relay-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.relay-container span {
+  color: #577399;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 label:after {
@@ -100,7 +113,7 @@ label:after {
 }
 
 input:checked + label {
-  background: #bada55;
+  background: #5acc3d;
 }
 
 input:checked + label:after {

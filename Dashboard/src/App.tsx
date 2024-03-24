@@ -148,17 +148,20 @@ function App() {
         />
         <div className="card">
           <div className="d-flex">
-            <div>
+            <div className="relay-container">
               <input type="checkbox" checked={r1Switch} />
               <label onClick={onClickR1}></label>
+              <span>AIR CONDITIONER</span>
             </div>
-            <div>
+            <div className="relay-container">
               <input type="checkbox" checked={r2Switch} />
               <label onClick={onClickR2}></label>
+              <span>FAN</span>
             </div>
-            <div>
+            <div className="relay-container">
               <input type="checkbox" checked={r3Switch} />
               <label onClick={onClickR3}></label>
+              <span>HUMIDIFIER</span>
             </div>
           </div>
           <div className="d-flex">
