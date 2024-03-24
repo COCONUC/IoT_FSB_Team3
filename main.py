@@ -1,15 +1,20 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 tempValidator = 'temp > 0 and temp < 50'
-humidValidator = 'humid > 40 or humid < 80'
+humidValidator = 'humid >= 0 and humid < 80'
 
 @app.route('/api/temp-fomular', methods=['GET'])
+@cross_origin()
 def getTempFormular():
     return jsonify({'result': tempValidator})
 
 @app.route('/api/temp-fomular', methods=['POST'])
+@cross_origin()
 def setTempFormular():
     data = request.get_json()  # Get the JSON data from the request body
     if data is None or 'data' not in data:
@@ -23,10 +28,12 @@ def setTempFormular():
     return jsonify({'result': f'Formular updated: {formular}'}), 200
 
 @app.route('/api/humid-fomular', methods=['GET'])
+@cross_origin()
 def getHumidFormular():
     return jsonify({'result': humidValidator})
 
 @app.route('/api/humid-fomular', methods=['POST'])
+@cross_origin()
 def setHumidFormular():
     data = request.get_json()  # Get the JSON data from the request body
     if data is None or 'data' not in data:
@@ -40,10 +47,11 @@ def setHumidFormular():
     return jsonify({'result': f'Formular updated: {formular}'}), 200
 
 @app.route('/api/validate', methods=['GET'])
+@cross_origin()
 def validateTempAndHumid():
     # Get query parameters from the request
-    temp = int(request.args.get('temp'))
-    humid = int(request.args.get('humid'))
+    temp = float(request.args.get('temp'))
+    humid = float(request.args.get('humid'))
 
     isValidTemp = eval(tempValidator)
     isValidHumid = eval(humidValidator)
