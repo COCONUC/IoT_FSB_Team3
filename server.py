@@ -24,6 +24,8 @@ def mqtt_subscribed(client, userdata, mid, granted_qos):
 
 def mqtt_message(client, userdata, message):
     global relay_topics
+    global is_relay_set
+    global relay_number
     payload = str(message.payload.decode('utf-8'))
     print("Receive data from topic " + message.topic +": " + payload)
     match message.topic.split('/')[-1]:
