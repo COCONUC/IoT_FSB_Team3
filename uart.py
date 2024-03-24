@@ -15,50 +15,15 @@ def getPort():
     return commPort
 
 isSensorConnected = False
+portName = "/dev/ttyUSB0"
+baudrate=9600
 try:
-    portName = "/dev/ttyUSB0"
-    ser = serial.Serial(port=portName, baudrate=9600)
-    print(ser)
-    print("Open port successfully")
+    ser = serial.Serial(port=portName, baudrate=baudrate)
+    print("Open port successfully: " + str(ser))
     isSensorConnected = True
 except:
     print("Can not open the port")
     isSensorConnected = False
-
-def processData(client, data):
-    data = data.replace("!", "")
-    data = data.replace("#", "")
-    splitData = data.split(":")
-    print(splitData)
-    if splitData[1] == "T":
-        client.publish("sensor1", splitData[2])
-    elif splitData[1] == "L":
-        client.publish("sensor2", splitData[2])
-    elif splitData[1] == "H":
-        client.publish("sensor3", splitData[2])
-
-mess = ""
-
-def readSerial(client):
-    bytesToRead = ser.inWaiting()
-    if (bytesToRead > 0):
-        global mess
-        mess = mess + ser.read(bytesToRead).decode("UTF-8")
-        print(mess)
-        while ("#" in mess) and ("!" in mess):
-            start = mess.find("!")
-            end = mess.find("#")
-            processData(client, mess[start:end + 1])
-            if (end == len(mess)):
-                mess = ""
-            else:
-                mess = mess[end+1:]
-
-
-def writeData(data):
-    print(data)
-    ser.write((str(data)).encode())
-
 
 # RS485 protocol
 def serial_read_data(ser):

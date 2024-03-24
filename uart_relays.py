@@ -15,11 +15,11 @@ def getPort():
     return commPort
 
 isSensorConnected = False
+portName = "/dev/ttyUSB0"
+baudrate=9600
 try:
-    portName = "/dev/ttyUSB0"
-    ser_relays = serial.Serial(port=portName, baudrate=9600)
-    print(ser_relays)
-    print("Open port successfully")
+    ser = serial.Serial(port=portName, baudrate=baudrate)
+    print("Open port successfully: " + str(ser))
     isSensorConnected = True
 except:
     print("Can not open the port")
