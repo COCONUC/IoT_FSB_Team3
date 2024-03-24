@@ -66,7 +66,6 @@ while True:
 
         # Relays interact
         if is_relay_set == True:
-            print(relay_number)
             match relay_number:
                 case 1:
                     print('Start interact with relay 1')
@@ -91,6 +90,8 @@ while True:
         if temp > 0:
             print(str(temp) + ' °C')
             mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
+        if is_relay_set == True:
+            continue
         humid = round(readSensor(2) * 0.01, 2)
         if humid >= 0:
             print(str(humid) + ' %')
