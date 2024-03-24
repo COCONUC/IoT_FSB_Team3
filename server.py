@@ -26,8 +26,12 @@ def mqtt_message(client, userdata, message):
     global relay_topics
     global is_relay_set
     global relay_number
+    global relay_value
+
     payload = str(message.payload.decode('utf-8'))
+    relay_value = payload == '1'
     print("Receive data from topic " + message.topic +": " + payload)
+
     match message.topic.split('/')[-1]:
         case 'r1':
             print('set relay 1')
@@ -55,6 +59,7 @@ mqttClient.loop_start()
 
 is_relay_set = False
 relay_number = 0
+relay_value = False
 
 while True:
     if isSensorConnected and ser != None:
@@ -65,17 +70,17 @@ while True:
             match relay_number:
                 case 1:
                     print('Start interact with relay 1')
-                    response = setRelay(payload == '1', 1)
+                    response = setRelay(relay_value, 1)
                     print('Response R1: ' + str(response))
                     mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], str(response) == '255')
                 case 2:
                     print('Start interact with relay 2')
-                    response = setRelay(payload == '1', 2)
+                    response = setRelay(relay_value, 2)
                     print('Response R2: ' + str(response))
                     mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], str(response) == '255')
                 case 3:
                     print('Start interact with relay 3')
-                    response = setRelay(payload == '1', 3)
+                    response = setRelay(relay_value, 3)
                     print('Response R3: ' + str(response))
                     mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], str(response) == '255')
             is_relay_set = False
