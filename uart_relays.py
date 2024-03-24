@@ -63,6 +63,7 @@ def setRelay(state, relay_index):
             ser_relays.write(relay2_ON)
         else:
             ser_relays.write(relay2_OFF)
+
     # Relay ID4
     if relay_index == 3:
         print('Set relay 3: ' + str(state))
@@ -70,5 +71,7 @@ def setRelay(state, relay_index):
             ser_relays.write(relay3_ON)
         else:
             ser_relays.write(relay3_OFF)
+
+    # Wait 1s and read relay's response
     time.sleep(1)
     return(serial_read_data(ser_relays))

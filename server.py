@@ -28,20 +28,14 @@ def mqtt_message(client, userdata, message):
     print("Receive data from topic " + message.topic +": " + payload)
     match message.topic.split('/')[-1]:
         case 'r1':
-            response = setRelay(payload == '1', 1)
-            print('Response R1: ' + str(response))
-            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], str(response) == '255')
-            print(MQTT_TOPIC_PUB + relay_topics[0])
+            is_relay_set = True
+            relay_number = 1
         case 'r2':
-            response = setRelay(payload == '1', 2)
-            print('Response R2: ' + str(response))
-            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], str(response) == '255')
-            print(MQTT_TOPIC_PUB + relay_topics[1])
+            is_relay_set = True
+            relay_number = 2
         case 'r3':
-            response = setRelay(payload == '1', 3)
-            print('Response R3: ' + str(response))
-            mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], str(response) == '255')
-            print(MQTT_TOPIC_PUB + relay_topics[2])
+            is_relay_set = True
+            relay_number = 3
 
 #Inint MQTT client
 mqttClient = mqtt.Client()
@@ -54,14 +48,38 @@ mqttClient.on_message = mqtt_message
 
 mqttClient.loop_start()
 
+is_relay_set = False
+relay_number = 0
+
 while True:
     if isSensorConnected and ser != None:
-        temp = round(readSensor(1), 2) * 0.01
+
+        # Relays interact
+        if is_relay_set == True:
+            match relay_number:
+                case 1:
+                    response = setRelay(payload == '1', 1)
+                    print('Response R1: ' + str(response))
+                    mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[0], str(response) == '255')
+                case 2:
+                    response = setRelay(payload == '1', 2)
+                    print('Response R2: ' + str(response))
+                    mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[1], str(response) == '255')
+                case 3:
+                    response = setRelay(payload == '1', 3)
+                    print('Response R3: ' + str(response))
+                    mqttClient.publish(MQTT_TOPIC_PUB + relay_topics[2], str(response) == '255')
+            is_relay_set = False
+            relay_number = 0
+
+        # Sensor read
+        temp = round(readSensor(1) * 0.01, 2)
         if temp > 0:
             print(str(temp) + ' °C')
             mqttClient.publish(MQTT_TOPIC_PUB + '/temp', temp)
-        humid = round(readSensor(2), 2) * 0.01
+        humid = round(readSensor(2) * 0.01, 2)
         if humid > 0:
             print(str(humid) + ' %')
             mqttClient.publish(MQTT_TOPIC_PUB + '/humid', humid)
-    time.sleep(5)
+        
+    time.sleep(1)
