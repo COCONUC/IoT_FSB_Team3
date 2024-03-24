@@ -50,7 +50,7 @@ mqttClient.connect(MQTT_SERVER, int(MQTT_PORT), 60)
 #Register mqtt events
 mqttClient.on_connect = mqtt_connected
 mqttClient.on_subscribe = mqtt_subscribed
-# mqttClient.on_message = mqtt_message
+mqttClient.on_message = mqtt_message
 
 mqttClient.loop_start()
 
