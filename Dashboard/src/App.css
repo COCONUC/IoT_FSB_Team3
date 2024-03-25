@@ -3,11 +3,18 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #fff;
+  background: linear-gradient(#cbf2f7, #34BCBE);
 }
 
 body{
-  background-color: #ebebeb;
+  background-color: #85d9dc;
+}
+
+h3{
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: #3c3c3c;
 }
 
 .logo {
@@ -41,7 +48,7 @@ label {
   text-indent: -9999px;
   width: 100px;
   height: 50px;
-  background: #577399;
+  background: #d7d7d7;
   display: block;
   border-radius: 100px;
   position: relative;
@@ -55,9 +62,13 @@ div.relay-container {
 }
 
 div.relay-container span {
-  color: #577399;
-  font-weight: bold;
+  color: #fff;
   white-space: nowrap;
+  margin-top: 3px;
+}
+.MuiSlider-root,
+.MuiSlider-markLabel{
+  color: #fff !important;
 }
 
 label:after {
@@ -85,11 +96,17 @@ label:after {
   border: 0;
 }
 
+.box-card{
+  background: #00000029;
+  padding: 20px 50px;
+  border-radius: 18px;
+}
+
 .popup button{
   position: absolute;
-  right: -25px;
-  top: -40px;
-  background-color: #fff;
+  right: 0;
+  top: -84px;
+  background-color: transparent;
   outline: 0;
   padding: 0;
 }
@@ -98,18 +115,29 @@ label:after {
   border: none;
 }
 
+
 .temp,.humid{
   position: relative;
+  width: 40px;
+  height: 100px;
+  border-radius: 50%;
+  border: 10px solid #fff;
+}
+
+.temp img,.humid img{
+  position: absolute;
+  left: 0;
+  top: 38px;
 }
 
 .temp span,
 .humid span{
-  color: #577399;
+  color: #1c1c1c;
   position: absolute;
-  top: 25px;
+  top: 51px;
   width: 100%;
-  left: 70px;
-  font-size: 20px;
+  left: 22px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -127,7 +155,7 @@ label:active:after {
 }
 
 .container{
-  width: 700px;
+  width: 670px;
 }
 
 .cs-main-container{

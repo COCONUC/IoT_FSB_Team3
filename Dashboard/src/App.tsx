@@ -112,41 +112,47 @@ function App() {
     <>
       <div className="container">
         <h3>DASHBOARD IOT TEAM 3</h3>
-        <div className="d-flex">
-          <div className="temp">
-            <img width="80px" src="temp.png" />
-            <span>{Math.floor(parseFloat(temp) * 100) / 100} °C</span>
-          </div>
-          <div className="humid">
-            <img width="80px" src="viscosity.png" />
-            <span>{Math.floor(parseFloat(humid) * 100) / 100} %</span>
-          </div>
-        </div>
         <div className="popup">
           <PopUp temp={temp} humid={humid} />
         </div>
+        <div className="d-flex mt-3">
+          <div className="temp box-card">
+            <div>
+              <img width="60px" src="temp.png" />
+            </div>
+            <span>{Math.round(parseFloat(temp) * 100) / 100} °C</span>
+          </div>
+          <div className="humid box-card">
+            <img width="56px" src="viscosity.png" />
+            <span>{Math.round(parseFloat(humid) * 100) / 100} %</span>
+          </div>
+        </div>
+        <div className="box-card mt-3">
         <ChartJS dataset={dataset} />
-        <Slider
-          aria-label="Limit items"
-          getAriaValueText={(value: number) => `${value} items`}
-          onChange={(_e, value) => setChartLimit(value as number)}
-          defaultValue={20}
-          step={5}
-          min={5}
-          max={50}
-          valueLabelDisplay="auto"
-          marks={[
-            {
-              value: 5,
-              label: "5 times",
-            },
-            {
-              value: 50,
-              label: "50 times",
-            },
-          ]}
-        />
-        <div className="card">
+        </div>
+        <div className="box-card mt-3">
+          <Slider
+            aria-label="Limit items"
+            getAriaValueText={(value: number) => `${value} items`}
+            onChange={(_e, value) => setChartLimit(value as number)}
+            defaultValue={20}
+            step={5}
+            min={5}
+            max={50}
+            valueLabelDisplay="auto"
+            marks={[
+              {
+                value: 5,
+                label: "5 times",
+              },
+              {
+                value: 50,
+                label: "50 times",
+              },
+            ]}
+          />
+        </div>
+        <div className="box-card mt-3">
           <div className="d-flex">
             <div className="relay-container">
               <input type="checkbox" checked={r1Switch} />
@@ -163,11 +169,6 @@ function App() {
               <label onClick={onClickR3}></label>
               <span>HUMIDIFIER</span>
             </div>
-          </div>
-          <div className="d-flex">
-            <p>R1 Switch</p>
-            <p>R2 Switch</p>
-            <p>R3 Switch</p>
           </div>
         </div>
       </div>
