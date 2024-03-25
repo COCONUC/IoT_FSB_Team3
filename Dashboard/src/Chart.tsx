@@ -14,7 +14,7 @@ interface Props {
 
 function ChartJS(props: Props) {
   const series = [
-    { type: "line", dataKey: "humid", color: "#00f99bde", yAxisKey: "rightAxis", label: "Humid" },
+    { type: "line", dataKey: "humid", color: "#5acc3d", yAxisKey: "rightAxis", label: "Humid" },
     { type: "bar", dataKey: "temp", color: "#007373", yAxisKey: "leftAxis", label: "Temp" },
   ];
 
