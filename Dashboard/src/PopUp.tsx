@@ -1,6 +1,6 @@
-// import Popup from "reactjs-popup";
+import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-// import ChatGPT from "./ChatGPT";
+import ChatGPT from "./ChatGPT";
 import Alarm from "./alarm";
 import { useState } from "react";
 
@@ -14,10 +14,21 @@ function PopUp(props: Props) {
 
   return (
     <>
-      <button onClick={() => setTrigger(!trigger)}>
+      {/* <button onClick={() => setTrigger(!trigger)}>
         {trigger ? <img width="50px" src="chat_triggered.png" alt="Chat" /> : <img width="50px" src="chat.png" alt="Chat" />}
       </button>
-      {trigger && <Alarm {...props} />}
+      {trigger && <Alarm {...props} />} */}
+
+      <Popup
+        trigger={
+          <button>
+            <img width="50px" src="chat.png" alt="Chat" />
+          </button>
+        }
+        position="right top"
+      >
+        <ChatGPT {...props} />
+      </Popup>
     </>
   );
 }

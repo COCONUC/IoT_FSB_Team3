@@ -3,11 +3,11 @@ import { useState } from "react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "GPT_API_KEY";
+const API_KEY = "API_KEY";
 
 interface Props {
-  temp: number;
-  humid: number;
+  temp: string;
+  humid: string;
 }
 
 const ChatGPT = (props: Props) => {
@@ -80,11 +80,10 @@ const ChatGPT = (props: Props) => {
               typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
             >
               {messages.map((message: any, i: number) => {
-                console.log(message);
                 return <Message key={i} model={message} />;
               })}
             </MessageList>
-            <MessageInput placeholder="Send a Message" value={`Is ${props.temp} Celsius degree and ${props.humid} humidity percent good for health?`} onSend={handleSendRequest} />
+            <MessageInput defaultValue="Send a Message" value={`Is ${props.temp} Celsius degree and ${props.humid} humidity percent good for health?`} onSend={handleSendRequest} />
           </ChatContainer>
         </MainContainer>
       </div>
