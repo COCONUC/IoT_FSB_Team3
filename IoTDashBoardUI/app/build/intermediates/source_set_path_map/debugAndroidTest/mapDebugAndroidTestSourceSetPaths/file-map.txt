@@ -1,0 +1,6 @@
+team3.iot.iotdashboardui.test.app-jetified-annotation-experimental-1.3.0-0 C:\Gradle\gradle-8.4\bin\caches\transforms-3\a40ba459be294fa45cf8560d6e86d558\transformed\jetified-annotation-experimental-1.3.0\res
+team3.iot.iotdashboardui.test.app-jetified-core-1.5.0-1 C:\Gradle\gradle-8.4\bin\caches\transforms-3\f4f6c710ff68ee721acb8a1a7c106ecc\transformed\jetified-core-1.5.0\res
+team3.iot.iotdashboardui.test.app-androidTest-2 C:\IoT_Project\IoTDashBoardUI\app\build\generated\res\resValues\androidTest\debug
+team3.iot.iotdashboardui.test.app-mergeDebugAndroidTestResources-3 C:\IoT_Project\IoTDashBoardUI\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+team3.iot.iotdashboardui.test.app-mergeDebugAndroidTestResources-4 C:\IoT_Project\IoTDashBoardUI\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+team3.iot.iotdashboardui.test.app-debugAndroidTest-5 C:\IoT_Project\IoTDashBoardUI\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

@@ -1,0 +1,2 @@
+team3.iot.iotdashboardui.test:style/WhiteBackgroundTheme = 0x7f010001
+team3.iot.iotdashboardui.test:style/WhiteBackgroundDialogTheme = 0x7f010000

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="0dp"
+    android:paddingLeft="0dp"
+    tools:context=".ChartActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10">
+
+        <TextView
+            android:id="@+id/chartName"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginStart="78dp"
+            android:layout_marginTop="40dp"
+            android:text="Temp, Humid Chart"
+            android:textColor="@color/lavender"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+
+        <LinearLayout
+            android:layout_weight="20"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_weight="60"
+            android:id="@+id/chart"
+            android:layout_width="316dp"
+            android:layout_height="521dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="0dp" />
+
+        <LinearLayout
+            android:layout_weight="20"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"></LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

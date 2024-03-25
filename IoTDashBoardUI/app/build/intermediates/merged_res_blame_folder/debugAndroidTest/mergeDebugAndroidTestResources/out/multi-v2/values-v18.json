@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "team3.iot.iotdashboardui.test.app-mergeDebugAndroidTestResources-3:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Gradle\\gradle-8.4\\bin\\caches\\transforms-3\\f4f6c710ff68ee721acb8a1a7c106ecc\\transformed\\jetified-core-1.5.0\\res\\values-v18\\values.xml",
+                    "from": {
+                        "startLines": "4,12",
+                        "startColumns": "0,0",
+                        "startOffsets": "180,596",
+                        "endLines": "11,19",
+                        "endColumns": "8,8",
+                        "endOffsets": "595,1009"
+                    },
+                    "to": {
+                        "startLines": "2,10",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,475",
+                        "endLines": "9,17",
+                        "endColumns": "8,8",
+                        "endOffsets": "470,888"
+                    }
+                }
+            ]
+        }
+    ]
+}
